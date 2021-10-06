@@ -19,14 +19,14 @@ module.exports = {
 	output: {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'dist'),
-		assetModuleFilename: 'Images/[hash][ext][query]',
+		assetModuleFilename: 'images/[hash][ext]',
 	},
 
 	module: {
 		rules: [
 			{
-				test: /\.(png|jpe?g|gif|svg)$/i,
-				type: 'asset/resource',
+				test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+				use: 'asset/resource',
 			},
 			{
 				test: /\.(s[ac]|c)ss$/i,
@@ -57,8 +57,8 @@ module.exports = {
 
 	devtool: 'source-map',
 	devServer: {
+		historyApiFallback: true,
 		static: './dist',
-		compress: true,
 		hot: true,
 	},
 };
